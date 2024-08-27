@@ -2,7 +2,9 @@
 
 using namespace std;
 
-int sumatorias[100005];
+const tamanio = 320000;
+
+int sumatorias[tamanio];
 
 int calcularSumatoria(int item) {
   if (item == 1) {
@@ -12,7 +14,7 @@ int calcularSumatoria(int item) {
   for (int i = 2; i * i <= item; i++) {
     if (item % i == 0) {
       resultado += i;
-      if (i * i  != item) { // Evita agregar el mismo divisor dos veces cuando i es la raíz cuadrada de n
+      if (i * i  != item) {
         resultado += item / i;
       }
     }
@@ -27,7 +29,7 @@ void initializeNumbers(int n) {
 }
 
 int main() {
-  initializeNumbers(100008);
+  initializeNumbers(tamanio);
   int n; 
   cin >> n;
   for (int i = 1; i<=n; i++) {
