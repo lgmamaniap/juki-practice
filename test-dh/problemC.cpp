@@ -1,7 +1,6 @@
 // cumplañeros
 #include <iostream>
 #include <vector>
-#include <unordered_set>
 
 using namespace std;
 
@@ -48,7 +47,6 @@ int main() {
   vector<int> years, acc;
   years.push_back(0);
   acc.push_back(0);
-  unordered_set<int> procesed;
   
   int per, dhrs, dh;
 
@@ -56,12 +54,11 @@ int main() {
   
   while(dhrs--) {
       cin >> dh;
-      if (procesed.count(dh))
+      if (years.back() == dh)
         acc[acc.size() - 1]++;
       else {
         years.push_back(dh);
         acc.push_back(acc.back() + 1);
-        procesed.insert(dh);
       }
   }
   
