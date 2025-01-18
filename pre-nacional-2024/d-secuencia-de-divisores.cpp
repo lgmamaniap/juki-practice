@@ -2,14 +2,9 @@
 
 using namespace std;
 
-const tamanio = 320000;
-
-int sumatorias[tamanio];
-
-int calcularSumatoria(int item) {
-  if (item == 1) {
-    return 0;
-  }
+int calculateSum(int item) {
+  if (item < 2) return 0;
+    
   int resultado = 1;
   for (int i = 2; i * i <= item; i++) {
     if (item % i == 0) {
@@ -22,20 +17,14 @@ int calcularSumatoria(int item) {
   return resultado;
 }
 
-void initializeNumbers(int n) {
-  for (int i = 1; i<=n; i++) {
-    sumatorias[i] = calcularSumatoria(i);
-  }
-}
-
 int main() {
-  initializeNumbers(tamanio);
   int n; 
   cin >> n;
-  for (int i = 1; i<=n; i++) {
+  while(n--) {
     int a;
     cin >> a;
-    int sumatoria = sumatorias[a];
+    
+    int sumatoria = calculateSum(a);
 
     bool perfecto = false;
     bool romantico = false;
@@ -50,7 +39,7 @@ int main() {
     }
 
     // Es romantico?
-    if (a != sumatoria && sumatorias[sumatoria] == a) {
+    if (a != sumatoria && calculateSum(sumatoria) == a) {
       cout << " romantico";
       romantico = true;
     }
